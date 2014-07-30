@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+
+  "name": "Launch Academy Voyager",
+  "description": "This extension connects to Launch Academy and processes
+   records and notifications for the Help Request System",
+  "version": "1.0",
+
+  "permissions": [
+    "http://launchacademy-voyager.herokuapp.com/"
+  ],
+  "browser_action": {
+    "default_icon": "launchacademy.png",
+    "default_popup": "popup.html"
+  }
+}
