@@ -8,9 +8,10 @@
  *
  * @type {string}
  */
-var QUERY = 'kittens';
+var QUERY = 'launch academy';
+var QUERY2 = 'coding bootcamps';
 
-var kittenGenerator = {
+var quoraGenerator = {
   /**
    * Flickr URL that will give us lots and lots of whatever we're looking for.
    *
