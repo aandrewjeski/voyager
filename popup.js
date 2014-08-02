@@ -36,10 +36,10 @@ var quoraGenerator = {
    *
    * @public
    */
-  requestKittens: function() {
+  requestHelpRequests: function() {
     var req = new XMLHttpRequest();
-    req.open("GET", this.searchOnFlickr_, true);
-    req.onload = this.showPhotos_.bind(this);
+    req.open("GET", this.searchOnApollo_, true);
+    req.onload = this.showRequests_.bind(this);
     req.send(null);
   },
 
@@ -51,12 +51,12 @@ var quoraGenerator = {
    * @param {ProgressEvent} e The XHR ProgressEvent.
    * @private
    */
-  showPhotos_: function (e) {
-    var kittens = e.target.responseXML.querySelectorAll('photo');
-    for (var i = 0; i < kittens.length; i++) {
-      var img = document.createElement('img');
-      img.src = this.constructKittenURL_(kittens[i]);
-      img.setAttribute('alt', kittens[i].getAttribute('title'));
+  showRequests_: function (e) {
+    var requests = e.target.responseXML.querySelectorAll('request');
+    for (var i = 0; i < requests.length; i++) {
+      var img = document.createElement('text');
+      img.src = this.constructRequestURL_(requests[i]);
+      img.setAttribute('alt', requests[i].getAttribute('title'));
       document.body.appendChild(img);
     }
   },
@@ -69,8 +69,8 @@ var quoraGenerator = {
    * @return {string} The kitten's URL.
    * @private
    */
-  constructKittenURL_: function (photo) {
-    return "http://farm" + photo.getAttribute("farm") +
+  constructRequestURL_: function (text) {
+    return "http://farm" + text.getAttribute("farm") +
         ".static.flickr.com/" + photo.getAttribute("server") +
         "/" + photo.getAttribute("id") +
         "_" + photo.getAttribute("secret") +
@@ -80,5 +80,5 @@ var quoraGenerator = {
 
 // Run our kitten generation script as soon as the document's DOM is ready.
 document.addEventListener('DOMContentLoaded', function () {
-  kittenGenerator.requestKittens();
+  requestGenerator.requestHelpRequests();
 });
